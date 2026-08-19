@@ -35,8 +35,11 @@ function WavyLine({
 }) {
   const stagger = index * 0.055;
   const local = useTransform(scrollYProgress, [stagger, stagger + 1 / 4.2], [0, 1]);
-  const x = useTransform(local, [0, 1], ["-14vw", "0vw"]);
-  const y = useTransform(local, [0, 1], ["3.2vw", "0vw"]);
+  // Travel is in px, not vw, on purpose: as a vw it scaled with the screen, so on
+  // desktop the lines swung ~165px off the left edge and got clipped mid-sweep.
+  // Fixed px gives every width the same restrained motion the phone already had.
+  const x = useTransform(local, [0, 1], ["-56px", "0px"]);
+  const y = useTransform(local, [0, 1], ["12px", "0px"]);
   const skewY = useTransform(local, [0, 1], ["6deg", "0deg"]);
   const opacity = useTransform(local, [0, 1], [0.06, 1]);
 
@@ -44,7 +47,14 @@ function WavyLine({
     <motion.div
       style={reducedMotion ? { opacity: 1 } : { x, y, skewY, opacity }}
       className={cn(
-        "whitespace-nowrap font-[family-name:var(--font-display)] text-[8.6vw] font-extrabold uppercase leading-[0.92] tracking-[-0.035em] will-change-transform",
+        // Sized against BOTH axes, because the block was breaking out of both.
+        // 7.6vw (was 8.6): at 8.6 the longest line, "Then they trust you.", measured
+        // ~98vw and ran past the right margin at every desktop width.
+        // 10vh: seven lines this size plus the eyebrow, kicker and chip are taller than
+        // a laptop viewport once the fixed nav takes its 64px — the eyebrow was clipped
+        // off the top and the chip off the bottom. min() lets whichever axis is tighter
+        // decide; on phones the width still wins, so mobile is untouched.
+        "whitespace-nowrap font-[family-name:var(--font-display)] text-[min(7.6vw,10.5vh)] font-extrabold uppercase leading-[0.92] tracking-[-0.035em] will-change-transform",
         accent ? "text-accent" : "text-ink",
       )}
     >
@@ -64,10 +74,11 @@ export function SectionDifference() {
 
   return (
     <section ref={wrapRef} className="relative h-[340vh] pt-[12vh]">
-      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden px-[5vw]">
-        <p className="eyebrow mb-7">The difference</p>
+      {/* pt-16 clears the fixed nav — without it the eyebrow rendered underneath it. */}
+      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden px-[5vw] pt-16">
+        <p className="eyebrow mb-4">The difference</p>
 
-        <div className="flex flex-col items-start gap-[0.4vw]">
+        <div className="flex flex-col items-start">
           {LINES.map((text, i) => (
             <WavyLine
               key={text}
@@ -80,7 +91,7 @@ export function SectionDifference() {
           ))}
         </div>
 
-        <p className="mt-[5vh] max-w-[520px] text-[15px] leading-[1.65] text-ink-dim">
+        <p className="mt-8 max-w-[520px] text-[15px] leading-[1.65] text-ink-dim">
           Cutting the ums and ahs and tossing in b-roll doesn&apos;t keep them watching.
           So we edit for retention —{" "}
           <strong className="font-medium text-ink">
