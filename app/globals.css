@@ -7,15 +7,18 @@
    --------------------------------------------------------------- */
 
 @theme {
-  /* Surfaces */
-  --color-bg: #15151A;
-  --color-surface: #1F1F26;
-  --color-surface-2: #26262E;
-  --color-line: #2E2E37;
+  /* Surfaces — LIGHT PREVIEW (rama light-theme-preview).
+     Solo se dieron vuelta los tokens: los ~20 puntos que asumen fondo oscuro
+     (resplandores radiales, glows, sombras, filtros que oscurecen fotos)
+     siguen sin tocar y se van a ver mal. Es para dimensionar, no para mostrar. */
+  --color-bg: #F4F3F0;
+  --color-surface: #FFFFFF;
+  --color-surface-2: #EBE9E4;
+  --color-line: #D8D5CE;
 
   /* Text */
-  --color-ink: #ECEAE4;
-  --color-ink-dim: #8B8B93;
+  --color-ink: #1A1A1F;
+  --color-ink-dim: #6B6B73;
 
   /* Accent */
   --color-accent: #E8483C;
