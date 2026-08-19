@@ -38,7 +38,16 @@ anything that reads as a machine readout. Do not use it for prose.
 ## Scale
 
 - Section headline: `clamp(28px, 4.4vw, 48px)`
-- Oversized display (section 03 only): `8.6vw`
+- Oversized display (section 03 only): `min(7.6vw, 10.5vh)`
+
+  Both axes, on purpose. At the original `8.6vw` the longest line — "Then they trust you.",
+  the payoff of the section — measured ~98vw and ran past the right margin at every desktop
+  width. And seven lines that size, plus the eyebrow, kicker and chip, are taller than a
+  laptop viewport once the fixed nav takes its 64px, so the eyebrow was clipped off the top
+  and the chip off the bottom. `min()` lets whichever axis is tighter decide. On phones the
+  width still wins, so mobile renders exactly as before.
+
+  If you ever add or lengthen a line in that block, re-check both bounds.
 - Body: 15px / 1.65
 - Mono labels: 10–11px, letter-spacing 0.1–0.2em, uppercase
 
