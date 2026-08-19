@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumen — 05 What We Edit</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#15151A;--surface:#1F1F26;--text:#ECEAE4;--dim:#8B8B93;--accent:#E8483C;--line:#2E2E37}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif}
+
+  /* PART A — fan-out paths */
+  .fan-wrap{height:300vh;position:relative}
+  .fan-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;margin-bottom:16px}
+  h2{font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(28px,4.4vw,46px);line-height:1.12;letter-spacing:-.02em;text-align:center;max-width:760px}
+  .sub{margin-top:16px;max-width:540px;text-align:center;font-size:15px;line-height:1.65;color:var(--dim)}
+  .fan-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:-1}
+  .source-chip{position:absolute;left:50%;top:16%;transform:translateX(-50%);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--dim);border:1px solid var(--line);background:var(--surface);padding:7px 14px;border-radius:3px}
+  .out-labels{position:absolute;bottom:9%;left:0;right:0;display:flex;justify-content:space-around;padding:0 4vw;flex-wrap:wrap;gap:8px}
+  .out-labels span{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--dim);opacity:0;transition:opacity .4s}
+  .out-labels span.on{opacity:1;color:var(--text)}
+
+  /* PART B — dynamic frame grid */
+  .grid-section{min-height:100vh;padding:90px 24px;display:flex;flex-direction:column;align-items:center}
+  .grid-head{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;margin-bottom:26px}
+  .frame-grid{width:100%;max-width:1000px;display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr 1fr;gap:6px;aspect-ratio:1.35;transition:grid-template-columns .5s cubic-bezier(.4,0,.2,1),grid-template-rows .5s cubic-bezier(.4,0,.2,1)}
+  .frame{position:relative;overflow:hidden;border-radius:5px;border:1px solid var(--line);background:var(--surface);cursor:pointer}
+  .frame img{width:100%;height:100%;object-fit:cover;filter:saturate(.55) brightness(.62);transition:filter .45s,transform .6s}
+  .frame:hover img{filter:saturate(1.1) brightness(1);transform:scale(1.04)}
+  .frame .name{position:absolute;left:12px;bottom:11px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--text);text-shadow:0 1px 6px rgba(0,0,0,.9);z-index:2}
+  .frame .ratio{position:absolute;right:12px;top:11px;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--dim);background:rgba(0,0,0,.6);padding:3px 6px;border-radius:2px;z-index:2}
+  .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6),transparent 55%);pointer-events:none}
+  .frame:hover{border-color:var(--accent)}
+  .closing{margin-top:36px;max-width:620px;text-align:center;font-size:15px;line-height:1.7;color:var(--dim)}
+  .closing strong{color:var(--text);font-weight:500}
+</style>
+</head>
+<body>
+
+<!-- PART A -->
+<div class="fan-wrap" id="fanWrap">
+  <div class="fan-sticky">
+    <svg class="fan-svg" id="fanSvg" viewBox="0 0 1000 800" preserveAspectRatio="none">
+      <path class="p" d="M500,120 C500,340 180,480 90,700" fill="none" stroke="#E8483C" stroke-width="2" stroke-linecap="round"/>
+      <path class="p" d="M500,120 C500,340 330,500 290,700" fill="none" stroke="#C43C33" stroke-width="2" stroke-linecap="round"/>
+      <path class="p" d="M500,120 C500,400 500,520 500,700" fill="none" stroke="#8B8B93" stroke-width="2" stroke-linecap="round"/>
+      <path class="p" d="M500,120 C500,340 670,500 710,700" fill="none" stroke="#C43C33" stroke-width="2" stroke-linecap="round"/>
+      <path class="p" d="M500,120 C500,340 820,480 910,700" fill="none" stroke="#E8483C" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <div class="source-chip">ONE RECORDING</div>
+    <div class="eyebrow">What we edit</div>
+    <h2>Every format you publish to.</h2>
+    <p class="sub">Send us whatever you recorded — a three-hour podcast, a webinar, a phone video shot in your kitchen. We take it from there.</p>
+    <div class="out-labels" id="outLabels">
+      <span>SHORTS</span><span>CLIPS</span><span>LONG-FORM</span><span>REELS</span><span>PROMOS</span>
+    </div>
+  </div>
+</div>
+
+<!-- PART B -->
+<section class="grid-section">
+  <div class="grid-head">Nine formats, one workflow</div>
+  <div class="frame-grid" id="grid"></div>
+  <p class="closing">One recording usually becomes several pieces, and <strong>every one of them gets edited to hold attention on the platform it's going to.</strong></p>
+</section>
+
+<script>
+/* PART A: draw paths on scroll */
+const paths=[...document.querySelectorAll('.fan-svg .p')];
+paths.forEach(p=>{const L=p.getTotalLength();p.style.strokeDasharray=L;p.style.strokeDashoffset=L;});
+const fanWrap=document.getElementById('fanWrap');
+const labels=[...document.querySelectorAll('#outLabels span')];
+const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function drawFan(){
+  const r=fanWrap.getBoundingClientRect();
+  const total=fanWrap.offsetHeight-window.innerHeight;
+  const p=Math.min(1,Math.max(0,-r.top/total));
+  paths.forEach((path,i)=>{
+    const L=path.getTotalLength();
+    const stagger=i*0.07;
+    const local=reduce?1:Math.min(1,Math.max(0,(p-stagger)/0.5));
+    path.style.strokeDashoffset=L*(1-local);
+    labels[i]?.classList.toggle('on',local>0.85);
+  });
+}
+window.addEventListener('scroll',drawFan,{passive:true});
+window.addEventListener('resize',drawFan);
+drawFan();
+
+/* PART B: dynamic frame grid */
+const FORMATS=[
+ {n:"VIDEO PODCASTS",r:"16:9",img:"https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600&q=70"},
+ {n:"YOUTUBE LONG-FORM",r:"16:9",img:"https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=600&q=70"},
+ {n:"REELS / TIKTOKS / SHORTS",r:"9:16",img:"https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&q=70"},
+ {n:"CLIP SETS",r:"1:1",img:"https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600&q=70"},
+ {n:"TALKING-HEAD",r:"16:9",img:"https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&q=70"},
+ {n:"WEBINARS",r:"16:9",img:"https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=600&q=70"},
+ {n:"PRESENTATIONS",r:"16:9",img:"https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=70"},
+ {n:"PROMOS",r:"16:9",img:"https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?w=600&q=70"},
+ {n:"STORIES",r:"9:16",img:"https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&q=70"}
+];
+const grid=document.getElementById('grid');
+FORMATS.forEach((f,i)=>{
+  const d=document.createElement('div');
+  d.className='frame';
+  d.dataset.col=i%3; d.dataset.row=Math.floor(i/3);
+  d.innerHTML=`<img src="${f.img}" alt="${f.n}"><div class="ratio">${f.r}</div><div class="name">${f.n}</div>`;
+  grid.appendChild(d);
+});
+const BASE='1fr 1fr 1fr', EXPAND=['1.9fr .8fr .8fr','.8fr 1.9fr .8fr','.8fr .8fr 1.9fr'];
+grid.addEventListener('pointerover',e=>{
+  const f=e.target.closest('.frame');if(!f)return;
+  grid.style.gridTemplateColumns=EXPAND[f.dataset.col];
+  grid.style.gridTemplateRows=EXPAND[f.dataset.row];
+});
+grid.addEventListener('pointerleave',()=>{
+  grid.style.gridTemplateColumns=BASE;
+  grid.style.gridTemplateRows=BASE;
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumen — 02 The Work</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#15151A;--surface:#1F1F26;--surface2:#26262E;--text:#ECEAE4;--dim:#8B8B93;--accent:#E8483C;--line:#2E2E37}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif}
+  .section{min-height:100vh;padding:90px 24px;display:flex;flex-direction:column;align-items:center}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;margin-bottom:18px}
+  h2{font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(28px,4.5vw,48px);line-height:1.1;letter-spacing:-.02em;text-align:center;max-width:760px}
+  .tabs{display:flex;gap:6px;margin-top:34px;background:var(--surface);border:1px solid var(--line);padding:5px;border-radius:6px}
+  .tab{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;padding:9px 16px;border-radius:4px;color:var(--dim);cursor:pointer;border:none;background:transparent;transition:.15s}
+  .tab.active{background:var(--surface2);color:var(--text)}
+  .monitor-wrap{width:100%;max-width:900px;margin-top:30px}
+  .monitor{position:relative;width:100%;aspect-ratio:16/9;background:#000;border:1px solid var(--line);border-radius:6px;overflow:hidden;cursor:ew-resize;user-select:none}
+  .monitor.vertical{aspect-ratio:9/16;max-width:340px;margin:0 auto}
+  .layer{position:absolute;inset:0}
+  .layer img{width:100%;height:100%;object-fit:cover;display:block}
+  .layer.raw img{filter:grayscale(.85) contrast(.82) brightness(.82) saturate(.5)}
+  .layer.edit img{filter:saturate(1.18) contrast(1.12) brightness(1.04)}
+  .layer.edit{clip-path:inset(0 0 0 50%)}
+  .tag{position:absolute;top:14px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;padding:5px 10px;border-radius:3px}
+  .tag.raw{left:14px;background:rgba(0,0,0,.7);color:var(--dim);border:1px solid var(--line)}
+  .tag.edit{right:14px;background:var(--accent);color:#fff}
+  .handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--accent);transform:translateX(-50%);box-shadow:0 0 14px rgba(232,72,60,.6)}
+  .grip{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px}
+  .readout{position:absolute;bottom:12px;left:14px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(236,234,228,.6);background:rgba(0,0,0,.5);padding:4px 9px;border-radius:3px}
+  .hint{margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--dim);text-align:center}
+  /* retention graph */
+  .retention{width:100%;max-width:900px;margin-top:56px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:24px}
+  .retention h3{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;color:var(--dim);text-transform:uppercase;margin-bottom:6px}
+  .retention .note{font-size:12px;color:var(--dim);margin-top:14px}
+  .legend{display:flex;gap:20px;margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim);letter-spacing:.08em}
+  .legend span{display:flex;align-items:center;gap:7px}
+  .swatch{width:14px;height:2px;display:inline-block}
+</style>
+</head>
+<body>
+<section class="section">
+  <div class="eyebrow">The work</div>
+  <h2>Watch the difference before you read about it.</h2>
+
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-format="long">LONG-FORM</button>
+    <button class="tab" data-format="clip">CLIP</button>
+    <button class="tab" data-format="short">SHORT-FORM</button>
+  </div>
+
+  <div class="monitor-wrap">
+    <div class="monitor" id="monitor">
+      <div class="layer raw"><img id="rawImg" src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1000&q=75" alt="raw"></div>
+      <div class="layer edit" id="editLayer"><img id="editImg" src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1000&q=75" alt="edited"></div>
+      <div class="tag raw">ORDINARY EDIT</div>
+      <div class="tag edit">OURS</div>
+      <div class="handle" id="handle"><div class="grip">↔</div></div>
+      <div class="readout" id="readout">TC 00:00:04:12</div>
+    </div>
+    <div class="hint">DRAG TO COMPARE — SAME SOURCE FOOTAGE</div>
+  </div>
+
+  <div class="retention">
+    <h3>Retention — same episode, both cuts</h3>
+    <svg viewBox="0 0 800 200" width="100%" height="200" preserveAspectRatio="none">
+      <line x1="0" y1="199" x2="800" y2="199" stroke="#2E2E37" stroke-width="1"/>
+      <line x1="0" y1="100" x2="800" y2="100" stroke="#2E2E37" stroke-width="1" stroke-dasharray="4 6"/>
+      <path d="M0,15 C120,40 180,150 260,168 C400,182 600,188 800,192" fill="none" stroke="#8B8B93" stroke-width="2"/>
+      <path d="M0,15 C150,32 300,58 460,74 C600,90 700,104 800,118" fill="none" stroke="#E8483C" stroke-width="2.5"/>
+      <circle cx="260" cy="168" r="4" fill="#8B8B93"/>
+      <text x="272" y="164" fill="#8B8B93" font-family="IBM Plex Mono, monospace" font-size="11">drop-off</text>
+    </svg>
+    <div class="legend">
+      <span><i class="swatch" style="background:#8B8B93"></i>ORDINARY EDIT</span>
+      <span><i class="swatch" style="background:#E8483C"></i>OURS</span>
+    </div>
+    <p class="note">[PLACEHOLDER] Real retention data, shown where clients allow it.</p>
+  </div>
+</section>
+
+<script>
+const SETS={
+ long:{raw:"https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1000&q=75",vertical:false},
+ clip:{raw:"https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=1000&q=75",vertical:false},
+ short:{raw:"https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&q=75",vertical:true}
+};
+const monitor=document.getElementById('monitor'),editLayer=document.getElementById('editLayer'),
+handle=document.getElementById('handle'),readout=document.getElementById('readout'),
+rawImg=document.getElementById('rawImg'),editImg=document.getElementById('editImg');
+let dragging=false,autoSweep=true,t=0;
+function setSplit(x){const r=monitor.getBoundingClientRect();let p=((x-r.left)/r.width)*100;p=Math.min(96,Math.max(4,p));editLayer.style.clipPath=`inset(0 0 0 ${p}%)`;handle.style.left=p+'%';}
+monitor.addEventListener('pointerdown',e=>{dragging=true;autoSweep=false;monitor.setPointerCapture(e.pointerId);setSplit(e.clientX);});
+monitor.addEventListener('pointermove',e=>{if(dragging)setSplit(e.clientX);});
+monitor.addEventListener('pointerup',()=>dragging=false);
+monitor.addEventListener('pointerleave',()=>dragging=false);
+function sweep(){if(autoSweep){t+=.006;const p=50+Math.sin(t)*18;editLayer.style.clipPath=`inset(0 0 0 ${p}%)`;handle.style.left=p+'%';}requestAnimationFrame(sweep);}
+requestAnimationFrame(sweep);
+let f=0;setInterval(()=>{f=(f+1)%24;readout.textContent=`TC 00:00:${String(4+Math.floor(f/24)).padStart(2,'0')}:${String(f).padStart(2,'0')}`;},1000/24);
+document.getElementById('tabs').addEventListener('click',e=>{
+ const b=e.target.closest('.tab');if(!b)return;
+ document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+ const s=SETS[b.dataset.format];rawImg.src=s.raw;editImg.src=s.raw;
+ monitor.classList.toggle('vertical',s.vertical);
+});
+</script>
+</body>
+</html>

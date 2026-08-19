@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumen — Hero Mockup v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Inter:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #EDEEF0;
+    --panel: #FFFFFF;
+    --ink: #14181C;
+    --ink-dim: #6B7076;
+    --accent: #00B6C6;
+    --accent-2: #E1338F;
+    --line: #D3D6DA;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+  }
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 56px 24px 40px;
+    position: relative;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: center;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 50% at 50% 0%, var(--bg) 30%, transparent 90%), var(--bg);
+    opacity: 0.92;
+    pointer-events: none;
+  }
+  .content { position: relative; z-index: 2; width: 100%; display: flex; flex-direction: column; align-items: center; }
+
+  .eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+  .eyebrow .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent-2);
+    animation: blink 1.6s infinite;
+  }
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.25; } }
+
+  h1 {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-weight: 700;
+    font-size: clamp(38px, 6.5vw, 78px);
+    line-height: 0.98;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    text-align: center;
+    max-width: 900px;
+  }
+  .sub {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-dim);
+    max-width: 500px;
+    text-align: center;
+  }
+  .support {
+    margin-top: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 8px 16px;
+    border-radius: 999px;
+  }
+  .support::before { content: "▸"; color: var(--accent); }
+
+  .cta-row {
+    margin-top: 26px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 13px 24px;
+    cursor: pointer;
+    border: 1.5px solid var(--ink);
+    transition: all 0.15s ease;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .btn.primary { background: var(--ink); color: var(--bg); }
+  .btn.primary:hover { background: var(--accent); border-color: var(--accent); color: var(--ink); }
+  .btn.secondary { background: transparent; }
+  .btn.secondary:hover { background: var(--panel); }
+
+  /* Monitor panel */
+  .monitor-wrap {
+    margin-top: 48px;
+    width: 100%;
+    max-width: 880px;
+    position: relative;
+  }
+  .monitor {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    overflow: hidden;
+    cursor: ew-resize;
+    user-select: none;
+    box-shadow: 0 20px 60px -20px rgba(20,24,28,0.25);
+  }
+  .layer { position: absolute; inset: 0; }
+  .layer img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .layer.before img { filter: grayscale(1) contrast(0.85) brightness(0.9); }
+  .layer.after img { filter: saturate(1.15) contrast(1.08) brightness(1.02); }
+  .layer.after {
+    clip-path: inset(0 0 0 50%);
+  }
+  .tag {
+    position: absolute;
+    top: 14px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    padding: 4px 9px;
+    background: rgba(20,24,28,0.75);
+    color: #fff;
+  }
+  .tag.raw { left: 14px; }
+  .tag.edit { right: 14px; background: var(--accent-2); }
+
+  .handle {
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: var(--ink);
+    transform: translateX(-50%);
+  }
+  .handle .grip {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg);
+    font-size: 13px;
+  }
+
+  /* Corner calibration brackets */
+  .bracket {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--ink);
+    opacity: 0.7;
+  }
+  .bracket.tl { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+  .bracket.tr { top: 10px; right: 10px; border-left: none; border-bottom: none; }
+  .bracket.bl { bottom: 10px; left: 10px; border-right: none; border-top: none; }
+  .bracket.br { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+  .readout {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: rgba(20,24,28,0.55);
+    background: rgba(255,255,255,0.65);
+    padding: 3px 10px;
+  }
+
+  .drag-hint {
+    margin-top: 16px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--ink-dim);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="content">
+    <div class="eyebrow"><span class="dot"></span>Video post-production</div>
+
+    <h1>If it goes on the internet, we edit it.</h1>
+    <p class="sub">Podcasts, YouTube, reels, shorts, webinars, promos. Every one of them edited around your brand story, so everything you publish looks unmistakably yours.</p>
+    <div class="support">Editing you don't have to double-check.</div>
+
+    <div class="cta-row">
+      <a class="btn primary" href="#">See the work</a>
+      <a class="btn secondary" href="#">Book a call</a>
+    </div>
+
+    <div class="monitor-wrap">
+      <div class="monitor" id="monitor">
+        <div class="layer before">
+          <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=900&q=75" alt="raw footage">
+        </div>
+        <div class="layer after" id="afterLayer">
+          <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=900&q=75" alt="edited footage">
+        </div>
+        <div class="tag raw">RAW</div>
+        <div class="tag edit">EDIT</div>
+        <div class="bracket tl"></div>
+        <div class="bracket tr"></div>
+        <div class="bracket bl"></div>
+        <div class="bracket br"></div>
+        <div class="handle" id="handle"><div class="grip">↔</div></div>
+        <div class="readout" id="readout">TC 00:00:04:12</div>
+      </div>
+      <div class="drag-hint">DRAG TO COMPARE — SAME SOURCE, ORDINARY EDIT VS. OURS</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const monitor = document.getElementById('monitor');
+const afterLayer = document.getElementById('afterLayer');
+const handle = document.getElementById('handle');
+const readout = document.getElementById('readout');
+
+let dragging = false;
+
+function setSplit(clientX) {
+  const rect = monitor.getBoundingClientRect();
+  let pct = ((clientX - rect.left) / rect.width) * 100;
+  pct = Math.min(96, Math.max(4, pct));
+  afterLayer.style.clipPath = `inset(0 0 0 ${pct}%)`;
+  handle.style.left = pct + '%';
+}
+
+monitor.addEventListener('pointerdown', (e) => {
+  dragging = true;
+  monitor.setPointerCapture(e.pointerId);
+  setSplit(e.clientX);
+});
+monitor.addEventListener('pointermove', (e) => {
+  if (dragging) setSplit(e.clientX);
+});
+monitor.addEventListener('pointerup', () => { dragging = false; });
+monitor.addEventListener('pointerleave', () => { dragging = false; });
+
+// fake incrementing timecode readout
+let frame = 0;
+setInterval(() => {
+  frame = (frame + 1) % 24;
+  let sec = 4 + Math.floor(frame / 24);
+  readout.textContent = `TC 00:00:${String(sec).padStart(2,'0')}:${String(frame).padStart(2,'0')}`;
+}, 1000/24);
+
+// gentle auto-demo sweep on load, then stop once user interacts
+let autoSweep = true;
+monitor.addEventListener('pointerdown', () => { autoSweep = false; });
+let t = 0;
+function demo() {
+  if (autoSweep) {
+    t += 0.006;
+    const pct = 50 + Math.sin(t) * 20;
+    afterLayer.style.clipPath = `inset(0 0 0 ${pct}%)`;
+    handle.style.left = pct + '%';
+  }
+  requestAnimationFrame(demo);
+}
+requestAnimationFrame(demo);
+</script>
+
+</body>
+</html>

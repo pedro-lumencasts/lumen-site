@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumen — 03 The Difference</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#15151A;--surface:#1F1F26;--text:#ECEAE4;--dim:#8B8B93;--accent:#E8483C;--line:#2E2E37}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif}
+  .wrap{height:340vh;position:relative;padding-top:12vh}
+  .sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding:0 5vw}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;margin-bottom:28px}
+  .wavy{display:flex;flex-direction:column;gap:.4vw;align-items:flex-start}
+  .line{font-family:'Sora',sans-serif;font-weight:800;font-size:8.6vw;line-height:.92;letter-spacing:-.035em;text-transform:uppercase;white-space:nowrap;will-change:transform,opacity;color:var(--text)}
+  .line.accent{color:var(--accent)}
+  .kicker{margin-top:5vh;max-width:520px;font-size:15px;line-height:1.65;color:var(--dim)}
+  .kicker strong{color:var(--text);font-weight:500}
+  .term{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--accent);border:1px solid rgba(232,72,60,.35);padding:5px 11px;border-radius:3px;margin-top:16px}
+  .progress{position:fixed;left:0;bottom:0;height:2px;background:var(--accent);width:0;z-index:50}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="wrap" id="wrap">
+  <div class="sticky">
+    <div class="eyebrow">The difference</div>
+    <div class="wavy" id="wavy">
+      <div class="line">Nobody watches</div>
+      <div class="line">one reel</div>
+      <div class="line">and buys.</div>
+      <div class="line">They watch.</div>
+      <div class="line">They come back.</div>
+      <div class="line">They watch more.</div>
+      <div class="line accent">Then they trust you.</div>
+    </div>
+    <p class="kicker">Cutting the ums and ahs and tossing in b-roll doesn't keep them watching. So we edit for retention — <strong>and when people watch longer, the platforms show your videos to more people.</strong></p>
+    <div class="term">WE CALL IT TIME ON BRAND</div>
+  </div>
+</div>
+
+<script>
+const lines=[...document.querySelectorAll('.line')];
+const wrap=document.getElementById('wrap');
+const progress=document.getElementById('progress');
+const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function update(){
+  const rect=wrap.getBoundingClientRect();
+  const total=wrap.offsetHeight-window.innerHeight;
+  const p=Math.min(1,Math.max(0,-rect.top/total));
+  progress.style.width=(p*100)+'%';
+  if(reduce){lines.forEach(l=>{l.style.opacity=1;l.style.transform='none';});return;}
+  lines.forEach((l,i)=>{
+    const stagger=i*0.055;
+    const local=Math.min(1,Math.max(0,(p-stagger)*4.2));
+    const x=(1-local)*-14;
+    const y=(1-local)*3.2;
+    const skew=(1-local)*6;
+    l.style.transform=`translate(${x}vw, ${y}vw) skewY(${skew}deg)`;
+    l.style.opacity=(0.06+local*0.94).toFixed(3);
+  });
+}
+window.addEventListener('scroll',update,{passive:true});
+window.addEventListener('resize',update);
+update();
+</script>
+</body>
+</html>

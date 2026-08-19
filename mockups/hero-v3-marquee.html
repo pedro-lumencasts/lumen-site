@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumen — Hero Mockup v3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #17121F;
+    --bg-2: #201830;
+    --text: #F3EFE9;
+    --text-dim: #A79CC0;
+    --gold: #F2B705;
+    --velvet: #7A1F2B;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+  .hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px 0;
+    background:
+      radial-gradient(ellipse 60% 45% at 50% 30%, rgba(242,183,5,0.08), transparent 70%),
+      var(--bg);
+  }
+
+  /* Bulb border along the very top */
+  .bulb-strip {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 26px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background: var(--bg-2);
+    border-bottom: 1px solid rgba(242,183,5,0.15);
+  }
+  .bulb {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 6px 1px rgba(242,183,5,0.6);
+    animation: twinkle 2.4s ease-in-out infinite;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.25; transform: scale(0.85); }
+    50% { opacity: 1; transform: scale(1); }
+  }
+
+  .content {
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 720px;
+  }
+
+  .tagline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(243,239,233,0.18);
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(6px);
+    padding: 7px 16px;
+    border-radius: 999px;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--text-dim);
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+  .tagline::before { content: "●"; color: var(--gold); font-size: 8px; }
+
+  h1 {
+    margin-top: 22px;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-optical-sizing: auto;
+    font-size: clamp(34px, 6vw, 64px);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+  }
+  h1 .word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(14px);
+    animation: fadeUp 0.55s ease forwards;
+  }
+
+  .sub {
+    margin-top: 22px;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text-dim);
+    max-width: 480px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+    animation-delay: 1.1s;
+  }
+
+  .support {
+    margin-top: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--gold);
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+    animation-delay: 1.25s;
+  }
+
+  .cta-row {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+    animation-delay: 1.4s;
+  }
+  .btn-primary {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 13px 28px;
+    border-radius: 999px;
+    background: var(--gold);
+    color: #211705;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 8px 24px -8px rgba(242,183,5,0.5);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px -8px rgba(242,183,5,0.65); }
+  .btn-ghost {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--text-dim);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(243,239,233,0.25);
+    padding-bottom: 2px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .btn-ghost:hover { color: var(--text); border-color: var(--text); }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Marquee filmstrip */
+  .marquee-wrap {
+    position: relative;
+    width: 100%;
+    height: 34vh;
+    margin-top: 56px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 18%, black 85%, transparent),
+                         linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to bottom, transparent, black 18%, black 85%, transparent),
+                linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+    mask-composite: intersect;
+  }
+  .marquee-track {
+    display: flex;
+    gap: 22px;
+    height: 100%;
+    align-items: center;
+    width: max-content;
+    animation: scroll 42s linear infinite;
+  }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .polaroid {
+    flex-shrink: 0;
+    background: #EFEAE0;
+    padding: 8px 8px 22px 8px;
+    border-radius: 3px;
+    box-shadow: 0 14px 30px -12px rgba(0,0,0,0.55);
+    position: relative;
+  }
+  .polaroid img {
+    width: 128px;
+    height: 168px;
+    object-fit: cover;
+    display: block;
+    filter: sepia(0.08) contrast(1.05);
+  }
+  .polaroid .tape {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 46px;
+    height: 16px;
+    background: rgba(242,183,5,0.35);
+    border: 1px solid rgba(242,183,5,0.5);
+  }
+
+  .curtain-fade {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 90px;
+    background: linear-gradient(to top, var(--bg), transparent);
+    z-index: 4;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="bulb-strip" id="bulbStrip"></div>
+
+  <div class="content">
+    <div class="tagline">Video post-production</div>
+    <h1 id="headline"></h1>
+    <p class="sub">Podcasts, YouTube, reels, shorts, webinars, promos. Every one of them edited around your brand story, so everything you publish looks unmistakably yours.</p>
+    <div class="support">▸ Editing you don't have to double-check.</div>
+    <div class="cta-row">
+      <a class="btn-primary" href="#">See the work</a>
+      <a class="btn-ghost" href="#">Book a call</a>
+    </div>
+  </div>
+
+  <div class="marquee-wrap">
+    <div class="marquee-track" id="marqueeTrack"></div>
+  </div>
+  <div class="curtain-fade"></div>
+</div>
+
+<script>
+  // Bulb strip
+  const bulbStrip = document.getElementById('bulbStrip');
+  for (let i = 0; i < 40; i++) {
+    const b = document.createElement('div');
+    b.className = 'bulb';
+    b.style.animationDelay = (i * 0.08) + 's';
+    bulbStrip.appendChild(b);
+  }
+
+  // Headline word-by-word stagger
+  const headline = document.getElementById('headline');
+  const text = "If it goes on the internet, we edit it.";
+  const words = text.split(' ');
+  words.forEach((w, i) => {
+    const span = document.createElement('span');
+    span.className = 'word';
+    span.textContent = w + (i < words.length - 1 ? '\u00A0' : '');
+    span.style.animationDelay = (0.15 + i * 0.09) + 's';
+    headline.appendChild(span);
+  });
+
+  // Marquee images
+  const IMAGES = [
+    "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=300&q=70",
+    "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=300&q=70",
+    "https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=300&q=70",
+    "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=300&q=70",
+    "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=300&q=70",
+    "https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?w=300&q=70",
+    "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=300&q=70",
+    "https://images.unsplash.com/photo-1536240478700-b869070f9279?w=300&q=70"
+  ];
+  const track = document.getElementById('marqueeTrack');
+  const doubled = [...IMAGES, ...IMAGES];
+  doubled.forEach((src, i) => {
+    const p = document.createElement('div');
+    p.className = 'polaroid';
+    p.style.transform = `rotate(${i % 2 === 0 ? -3 : 4}deg)`;
+    p.innerHTML = `<div class="tape"></div><img src="${src}" alt="still ${i}">`;
+    track.appendChild(p);
+  });
+</script>
+
+</body>
+</html>

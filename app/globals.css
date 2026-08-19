@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------
+   Lumen design tokens — provisional system (hero v1 direction).
+   If hero v2 or v3 is chosen, swap the values here only.
+   See docs/design-tokens.md
+   --------------------------------------------------------------- */
+
+@theme {
+  /* Surfaces */
+  --color-bg: #15151A;
+  --color-surface: #1F1F26;
+  --color-surface-2: #26262E;
+  --color-line: #2E2E37;
+
+  /* Text */
+  --color-ink: #ECEAE4;
+  --color-ink-dim: #8B8B93;
+
+  /* Accent */
+  --color-accent: #E8483C;
+  --color-accent-dark: #C43C33;
+
+  /* Machine-state accent — only used in the AI section */
+  --color-machine: #5C6BC0;
+
+  /* Type */
+  --font-display: var(--font-sora), sans-serif;
+  --font-body: var(--font-inter), sans-serif;
+  --font-mono: var(--font-plex-mono), monospace;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  body { margin: 0; overflow-x: hidden; }
+  ::selection { background: var(--color-accent); color: #fff; }
+}
+
+@layer utilities {
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-ink-dim);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
