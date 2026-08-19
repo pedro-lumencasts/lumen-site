@@ -1,33 +1,37 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------
-   Lumen design tokens — provisional system (hero v1 direction).
-   If hero v2 or v3 is chosen, swap the values here only.
+   Lumen design tokens — LIGHT.
+
+   Same roles as the dark system, inverted. The accent is #C43C33 rather
+   than #E8483C: the brighter red only reaches 3.7:1 on a light ground,
+   which fails AA for the small mono labels it gets used on. #C43C33 gets
+   4.9:1 as text and 5.2:1 with white on top as a button fill, and it is
+   not a new colour — it was already accent-dark in the dark system.
+
    See docs/design-tokens.md
    --------------------------------------------------------------- */
 
 @theme {
-  /* Surfaces — LIGHT PREVIEW (rama light-theme-preview).
-     Solo se dieron vuelta los tokens: los ~20 puntos que asumen fondo oscuro
-     (resplandores radiales, glows, sombras, filtros que oscurecen fotos)
-     siguen sin tocar y se van a ver mal. Es para dimensionar, no para mostrar. */
-  --color-bg: #F4F3F0;
+  /* Surfaces */
+  --color-bg: #FAF9F7;
   --color-surface: #FFFFFF;
-  --color-surface-2: #EBE9E4;
-  --color-line: #D8D5CE;
+  --color-surface-2: #F0EEE9;
+  --color-line: #E1DED7;
 
   /* Text */
-  --color-ink: #1A1A1F;
+  --color-ink: #17171C;
   --color-ink-dim: #6B6B73;
 
   /* Accent */
-  --color-accent: #E8483C;
-  --color-accent-dark: #C43C33;
+  --color-accent: #C43C33;
+  --color-accent-dark: #A63229;
 
-  /* Machine-state accent — only used in the AI section */
-  --color-machine: #5C6BC0;
+  /* Machine-state accent — only used in the AI section.
+     Darkened from #5C6BC0 for the same contrast reason as the red. */
+  --color-machine: #4553A8;
 
-  /* Type */
+  /* Type — unchanged by the light switch. Wired to next/font in app/layout.tsx. */
   --font-display: var(--font-sora), sans-serif;
   --font-body: var(--font-inter), sans-serif;
   --font-mono: var(--font-plex-mono), monospace;

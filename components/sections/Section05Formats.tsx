@@ -22,7 +22,7 @@ const FORMATS = [
   { name: "WEBINARS", ratio: "16:9", img: "https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=600&q=70" },
   { name: "PRESENTATIONS", ratio: "16:9", img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=70" },
   { name: "PROMOS", ratio: "16:9", img: "https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?w=600&q=70" },
-  { name: "STORIES", ratio: "9:16", img: "https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&q=70" },
+  { name: "STORIES", ratio: "9:16", img: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=600&q=70" },
 ];
 
 const BASE_TRACK = "1fr 1fr 1fr";
@@ -143,13 +143,13 @@ export function SectionFormats() {
               <img
                 src={f.img}
                 alt={f.name}
-                className="h-full w-full object-cover saturate-[.55] brightness-[.62] transition-[filter,transform] duration-[450ms,600ms] group-hover:scale-[1.04] group-hover:saturate-100 group-hover:brightness-100"
+                className="h-full w-full object-cover saturate-[.7] brightness-[.82] transition-[filter,transform] duration-[450ms,600ms] group-hover:scale-[1.04] group-hover:saturate-100 group-hover:brightness-100"
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 to-transparent to-55" />
-              <div className="absolute right-3 top-[11px] z-[2] rounded-sm bg-black/60 px-1.5 py-[3px] font-[family-name:var(--font-mono)] text-[9px] tracking-[0.08em] text-ink-dim">
+              <div className="absolute right-3 top-[11px] z-[2] rounded-sm bg-black/60 px-1.5 py-[3px] font-[family-name:var(--font-mono)] text-[9px] tracking-[0.08em] text-white/75">
                 {f.ratio}
               </div>
-              <div className="absolute bottom-[11px] left-3 z-[2] font-[family-name:var(--font-mono)] text-[10px] tracking-[0.1em] text-ink [text-shadow:0_1px_6px_rgba(0,0,0,0.9)]">
+              <div className="absolute bottom-[11px] left-3 z-[2] font-[family-name:var(--font-mono)] text-[10px] tracking-[0.1em] text-white [text-shadow:0_1px_6px_rgba(0,0,0,0.9)]">
                 {f.name}
               </div>
             </div>

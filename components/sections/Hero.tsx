@@ -22,7 +22,7 @@ const IMAGES = [
   "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=200&q=70",
   "https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?w=200&q=70",
   "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=200&q=70",
-  "https://images.unsplash.com/photo-1536240478700-b869070f9279?w=200&q=70",
+  "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=200&q=70",
   "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=200&q=70",
   "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=200&q=70",
   "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=200&q=70",
@@ -198,9 +198,9 @@ export function Hero() {
 
   return (
     <section ref={wrapRef} className="relative h-[300vh]">
-      <div className="sticky top-0 h-screen overflow-hidden bg-[radial-gradient(ellipse_80%_60%_at_50%_100%,rgba(232,72,60,0.10),transparent_70%)]">
+      <div className="sticky top-0 h-screen overflow-hidden bg-[radial-gradient(ellipse_80%_60%_at_50%_100%,rgba(196,60,51,0.06),transparent_70%)]">
         <p className="eyebrow absolute left-1/2 top-24 z-20 flex -translate-x-1/2 items-center gap-2">
-          <span className="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_8px_var(--color-accent)]" />
+          <span className="h-1.5 w-1.5 rounded-full bg-accent" />
           Video post-production
         </p>
 
@@ -262,7 +262,7 @@ export function Hero() {
               className="group absolute left-1/2 top-1/2 -ml-[31px] -mt-11 h-[88px] w-[62px] cursor-pointer [perspective:600px] will-change-transform"
             >
               <div className="relative h-full w-full transition-transform duration-500 ease-[cubic-bezier(.34,1.56,.64,1)] [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                <div className="absolute inset-0 overflow-hidden rounded-lg shadow-[0_6px_20px_rgba(0,0,0,0.4)] [backface-visibility:hidden]">
+                <div className="absolute inset-0 overflow-hidden rounded-lg shadow-[0_4px_16px_rgba(0,0,0,0.16)] [backface-visibility:hidden]">
                   <img
                     src={src}
                     alt=""
@@ -271,7 +271,7 @@ export function Hero() {
                   <span className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent to-50%" />
                 </div>
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 rounded-lg border border-line bg-surface-2 [backface-visibility:hidden] [transform:rotateY(180deg)]">
-                  <span className="font-[family-name:var(--font-mono)] text-[8px] tracking-[0.05em] text-accent">
+                  <span className="font-[family-name:var(--font-mono)] text-[8px] tracking-[0.05em] text-accent-dark">
                     {TIMECODES[i % TIMECODES.length]}
                   </span>
                   <span className="font-[family-name:var(--font-mono)] text-[7px] tracking-[0.1em] text-ink-dim">

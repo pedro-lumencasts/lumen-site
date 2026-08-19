@@ -14,7 +14,7 @@ const IMAGES = [
   "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=200&q=60",
   "https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?w=200&q=60",
   "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=200&q=60",
-  "https://images.unsplash.com/photo-1536240478700-b869070f9279?w=200&q=60",
+  "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=200&q=60",
   "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=200&q=60",
   "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=200&q=60",
   "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=200&q=60",
@@ -126,7 +126,7 @@ export function SectionAI() {
                     )}
                   />
                   {mode === "human" && d.note && (
-                    <div className="absolute bottom-[5px] left-1.5 max-w-[92%] rounded-sm bg-black/[.66] px-[5px] py-0.5 font-[family-name:var(--font-mono)] text-[8px] leading-[1.3] tracking-[0.05em] text-ink">
+                    <div className="absolute bottom-[5px] left-1.5 max-w-[92%] rounded-sm bg-black/70 px-[5px] py-0.5 font-[family-name:var(--font-mono)] text-[8px] leading-[1.3] tracking-[0.05em] text-white">
                       {d.note}
                     </div>
                   )}
@@ -136,7 +136,7 @@ export function SectionAI() {
           </div>
           {mode === "machine" && !reducedMotion && (
             <motion.div
-              className="pointer-events-none absolute top-0 bottom-0 w-0.5 bg-machine shadow-[0_0_10px_rgba(92,107,192,0.8)]"
+              className="pointer-events-none absolute top-0 bottom-0 w-0.5 bg-machine"
               animate={{ left: ["0%", "100%"] }}
               transition={{ duration: 3.3, repeat: Infinity, ease: "linear" }}
             />

@@ -58,9 +58,17 @@ passionate about".
 
 ## Settled
 
-- **Hero: v1 (scroll-morph).** Its dark timeline palette is therefore the confirmed system, not
-  a provisional one. Nothing needs recoloring.
+- **Hero: v1 (scroll-morph).**
+- **The site is light**, not the dark timeline palette v1 shipped with. See
+  `docs/design-tokens.md`. The dark version is tagged `dark-theme` in git.
 - **Primary CTA: "Try one video."** Secondary is "Build your order".
+
+### One trap the light switch exposed
+
+Text that sits **on photography** — the format-grid captions, the RAW/OURS tags, the timecode
+readout, the AI clip notes — is hard-coded white on a dark scrim. It must never use
+`--color-ink`, because it sits on images rather than on the page and so does not follow the
+theme. Inverting the tokens the first time turned all of it black-on-black.
 
 ## Open decisions — ask before assuming
 
