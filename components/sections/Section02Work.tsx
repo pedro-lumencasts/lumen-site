@@ -3,13 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { placeholder } from "@/lib/placeholder";
 
 type Format = "long" | "clip" | "short";
 
 const SETS: Record<Format, { raw: string; vertical: boolean }> = {
-  long: { raw: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1000&q=75", vertical: false },
-  clip: { raw: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=1000&q=75", vertical: false },
-  short: { raw: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&q=75", vertical: true },
+  long: { raw: placeholder(3), vertical: false },
+  clip: { raw: placeholder(7), vertical: false },
+  short: { raw: placeholder(11, "9:16"), vertical: true },
 };
 
 const TABS: { key: Format; label: string }[] = [

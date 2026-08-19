@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion, useScroll } from "framer-motion";
 import { CTA_PRIMARY, CTA_WORK } from "@/lib/brand";
+import { placeholder } from "@/lib/placeholder";
 
 /**
  * 01 · Hero — scroll-morph footage (mockups/hero-v1-scroll-morph.html).
@@ -14,24 +15,7 @@ import { CTA_PRIMARY, CTA_WORK } from "@/lib/brand";
  * 05 already use.
  */
 
-const IMAGES = [
-  "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=200&q=70",
-  "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=200&q=70",
-  "https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=200&q=70",
-  "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=200&q=70",
-  "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=200&q=70",
-  "https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?w=200&q=70",
-  "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=200&q=70",
-  "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=200&q=70",
-  "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=200&q=70",
-  "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=200&q=70",
-  "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=200&q=70",
-  "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=200&q=70",
-  "https://images.unsplash.com/photo-1611162458324-aae1eb4129a4?w=200&q=70",
-  "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=200&q=70",
-  "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=200&q=70",
-  "https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=200&q=70",
-];
+const IMAGES = Array.from({ length: 16 }, (_, i) => placeholder(i));
 
 const TIMECODES = [
   "00:04:12", "00:11:08", "00:22:47", "00:03:55",

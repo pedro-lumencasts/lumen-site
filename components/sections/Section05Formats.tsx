@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "framer-motion";
+import { placeholder } from "@/lib/placeholder";
 
 const OUTPUTS = ["SHORTS", "CLIPS", "LONG-FORM", "REELS", "PROMOS"];
 
@@ -14,15 +15,15 @@ const PATHS = [
 ];
 
 const FORMATS = [
-  { name: "VIDEO PODCASTS", ratio: "16:9", img: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600&q=70" },
-  { name: "YOUTUBE LONG-FORM", ratio: "16:9", img: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=600&q=70" },
-  { name: "REELS / TIKTOKS / SHORTS", ratio: "9:16", img: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&q=70" },
-  { name: "CLIP SETS", ratio: "1:1", img: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600&q=70" },
-  { name: "TALKING-HEAD", ratio: "16:9", img: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&q=70" },
-  { name: "WEBINARS", ratio: "16:9", img: "https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=600&q=70" },
-  { name: "PRESENTATIONS", ratio: "16:9", img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=70" },
-  { name: "PROMOS", ratio: "16:9", img: "https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?w=600&q=70" },
-  { name: "STORIES", ratio: "9:16", img: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=600&q=70" },
+  { name: "VIDEO PODCASTS", ratio: "16:9", img: placeholder(5, "16:9") },
+  { name: "YOUTUBE LONG-FORM", ratio: "16:9", img: placeholder(6, "16:9") },
+  { name: "REELS / TIKTOKS / SHORTS", ratio: "9:16", img: placeholder(7, "9:16") },
+  { name: "CLIP SETS", ratio: "1:1", img: placeholder(8, "1:1") },
+  { name: "TALKING-HEAD", ratio: "16:9", img: placeholder(9, "16:9") },
+  { name: "WEBINARS", ratio: "16:9", img: placeholder(10, "16:9") },
+  { name: "PRESENTATIONS", ratio: "16:9", img: placeholder(11, "16:9") },
+  { name: "PROMOS", ratio: "16:9", img: placeholder(12, "16:9") },
+  { name: "STORIES", ratio: "9:16", img: placeholder(13, "9:16") },
 ];
 
 const BASE_TRACK = "1fr 1fr 1fr";
