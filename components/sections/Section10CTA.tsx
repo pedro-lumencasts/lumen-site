@@ -5,7 +5,7 @@ export function SectionCTA() {
   return (
     <section
       id="start"
-      className="flex flex-col items-center px-6 py-[110px] [background:radial-gradient(ellipse_70%_60%_at_50%_0%,rgba(232,72,60,0.08),transparent_70%)]"
+      className="flex flex-col items-center px-6 py-[110px] [background:radial-gradient(ellipse_70%_60%_at_50%_0%,rgba(196,60,51,0.05),transparent_70%)]"
     >
       <p className="eyebrow">Start here</p>
       <h2 className="mt-[18px] max-w-[700px] text-center font-[family-name:var(--font-display)] text-[clamp(28px,4.4vw,46px)] font-bold leading-[1.12] tracking-[-0.02em]">

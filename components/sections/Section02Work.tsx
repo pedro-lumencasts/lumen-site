@@ -130,20 +130,20 @@ export function SectionWork() {
               className="block h-full w-full object-cover [filter:saturate(1.18)_contrast(1.12)_brightness(1.04)]"
             />
           </div>
-          <div className="absolute left-[14px] top-[14px] rounded-[3px] border border-line bg-black/70 px-2.5 py-[5px] font-[family-name:var(--font-mono)] text-[10px] tracking-[0.12em] text-ink-dim">
+          <div className="absolute left-[14px] top-[14px] rounded-[3px] border border-white/20 bg-black/65 px-2.5 py-[5px] font-[family-name:var(--font-mono)] text-[10px] tracking-[0.12em] text-white/80">
             ORDINARY EDIT
           </div>
           <div className="absolute right-[14px] top-[14px] rounded-[3px] bg-accent px-2.5 py-[5px] font-[family-name:var(--font-mono)] text-[10px] tracking-[0.12em] text-white">
             OURS
           </div>
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 bg-accent shadow-[0_0_14px_rgba(232,72,60,0.6)]" ref={handleRef}>
+          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 bg-accent" ref={handleRef}>
             <div className="absolute left-1/2 top-1/2 flex h-[42px] w-[42px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-accent text-[14px] text-white">
               ↔
             </div>
           </div>
           <div
             ref={readoutRef}
-            className="absolute bottom-3 left-[14px] rounded-[3px] bg-black/50 px-2.5 py-1 font-[family-name:var(--font-mono)] text-[10px] tracking-[0.1em] text-ink/60"
+            className="absolute bottom-3 left-[14px] rounded-[3px] bg-black/55 px-2.5 py-1 font-[family-name:var(--font-mono)] text-[10px] tracking-[0.1em] text-white/75"
           >
             TC 00:00:04:12
           </div>

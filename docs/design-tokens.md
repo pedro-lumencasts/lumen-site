@@ -3,26 +3,38 @@
 Defined in `app/globals.css` under `@theme`. Nothing should hardcode a hex value —
 if a color is missing here, add it here first.
 
-**Status: provisional.** These are the hero v1 (dark timeline) values. The hero direction
-is not yet chosen. If v2 or v3 wins, change the values in `globals.css` and every section
-recolors. Structure and spacing do not change.
+**Status: settled.** The site is light. The dark timeline palette that came with hero v1
+is kept in git history on the `dark-theme` tag if it is ever wanted back.
 
 ## Palette
 
 | Token | Value | Use |
 |---|---|---|
-| `--color-bg` | `#15151A` | Page background. Timeline charcoal. |
-| `--color-surface` | `#1F1F26` | Panels, cards, inset blocks. |
-| `--color-surface-2` | `#26262E` | Raised state inside a panel — active tab, clip body. |
-| `--color-line` | `#2E2E37` | Hairlines, borders, dividers. |
-| `--color-ink` | `#ECEAE4` | Primary text. Cool cream, not pure white. |
-| `--color-ink-dim` | `#8B8B93` | Body copy, labels, inactive states. |
-| `--color-accent` | `#E8483C` | Record-light red. CTAs, the "ours" side, active markers. |
-| `--color-accent-dark` | `#C43C33` | Secondary paths, hover-down state. |
-| `--color-machine` | `#5C6BC0` | **Only** in the AI section, for the machine-assembly state. |
+| `--color-bg` | `#FAF9F7` | Page background. Near-white, a touch warm. |
+| `--color-surface` | `#FFFFFF` | Panels, cards, inset blocks. Pure white so they lift off the page. |
+| `--color-surface-2` | `#F0EEE9` | Raised state inside a panel — active tab, clip body. |
+| `--color-line` | `#E1DED7` | Hairlines, borders, dividers. |
+| `--color-ink` | `#17171C` | Primary text. |
+| `--color-ink-dim` | `#6B6B73` | Body copy, labels, inactive states. |
+| `--color-accent` | `#C43C33` | Record-light red. CTAs, the "ours" side, active markers. |
+| `--color-accent-dark` | `#A63229` | Hover-down state, and text small enough to need more contrast. |
+| `--color-machine` | `#4553A8` | **Only** in the AI section, for the machine-assembly state. |
+
+The red is `#C43C33`, not the `#E8483C` of the dark system. On a light ground the brighter
+red only reaches 3.7:1, which fails AA for the small mono labels it gets used on; `#C43C33`
+reaches 4.9:1 as text and 5.2:1 with white on top as a button fill. `--color-machine` was
+darkened from `#5C6BC0` for the same reason. Every piece of text on the page was checked
+against its computed background — all of it passes AA.
 
 Accent discipline: red carries meaning — it marks *our* edit, the live state, the primary
 action. Do not use it decoratively or the distinction stops reading.
+
+### Text that sits on photography
+
+Chips and labels over footage — the format-grid captions, the RAW/OURS tags, the timecode
+readout, the AI clip notes — are hard-coded white on a dark scrim. They must **not** use
+`--color-ink`: they sit on images, not on the page, so they do not follow the theme. This is
+exactly what broke when the palette was first inverted.
 
 ## Type
 
