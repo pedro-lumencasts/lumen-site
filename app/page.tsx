@@ -7,7 +7,7 @@ import { SiteNav } from "@/components/sections/SiteNav";
 import { Hero } from "@/components/sections/Hero";
 import { SectionWork } from "@/components/sections/Section02Work";
 import { SectionDifference } from "@/components/sections/Section03Difference";
-import { SectionAI } from "@/components/sections/Section04AI";
+import { SectionAI, SectionProducer } from "@/components/sections/Section04AI";
 import { SectionFormats } from "@/components/sections/Section05Formats";
 import { SectionWhoFor } from "@/components/sections/Section06WhoFor";
 import { SectionAudiences } from "@/components/sections/Section0708Audiences";
@@ -28,6 +28,7 @@ export default function Home() {
         </div>
         <SectionDifference />
         <SectionAI />
+        <SectionProducer />
         <div id="what-we-edit" className="scroll-mt-16">
           <SectionFormats />
         </div>

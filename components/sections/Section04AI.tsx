@@ -157,16 +157,52 @@ export function SectionAI() {
         </p>
       </div>
 
-      <div className="mt-11 h-px w-full max-w-[640px] bg-line" />
+    </section>
+  );
+}
 
-      <div className="mt-[26px] flex max-w-[640px] gap-3.5 rounded border border-l-2 border-line border-l-accent bg-surface p-5">
-        <div className="whitespace-nowrap pt-0.5 font-[family-name:var(--font-mono)] text-[10px] tracking-[0.14em] text-accent">
-          HOW WE HOLD IT
-        </div>
-        <p className="text-sm leading-[1.65] text-ink-dim">
-          Every client has someone who owns coherence across the whole channel — not just editors working video by
-          video.
+/**
+ * The producer block — the start of the inverted passage.
+ *
+ * Runs dark on a light site on purpose: this is the claim the whole positioning
+ * rests on, so it gets a chapter break rather than a bordered box. It fades in
+ * from the page colour at the top and stays solid dark at the bottom, because
+ * section 05's fan-out picks the darkness up and carries it to ONE RECORDING.
+ */
+export function SectionProducer() {
+  return (
+    <section className="relative bg-[var(--color-invert-bg)] px-6 pt-32 pb-40 text-[var(--color-invert-ink)]">
+      {/* Entry fade from the light section above */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[linear-gradient(to_bottom,var(--color-bg),transparent)]" />
+      {/* Faint grid, so the dark reads as a surface rather than a hole */}
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:56px_56px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_40%,#000_50%,transparent_100%)]" />
+      {/* Red bloom under the statement */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_45%_at_50%_45%,rgba(232,72,60,0.16),transparent_70%)]" />
+
+      <div className="relative mx-auto max-w-[820px] text-center">
+        <p className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-[var(--color-invert-accent)]">
+          How we hold it
         </p>
+
+        <h2 className="mt-6 font-[family-name:var(--font-display)] text-[clamp(32px,5.4vw,60px)] font-bold leading-[1.05] tracking-[-0.025em]">
+          You get a producer, not a queue.
+        </h2>
+
+        <p className="mx-auto mt-7 max-w-[560px] text-[17px] leading-[1.65] text-[var(--color-invert-dim)]">
+          Someone who learns your channel, watches every frame you send, and pulls out every piece
+          worth publishing.{" "}
+          <strong className="font-medium text-[var(--color-invert-ink)]">
+            Not editors picking up whatever lands next.
+          </strong>
+        </p>
+      </div>
+
+      {/* Pulls the eye down into the fan-out */}
+      <div className="relative mt-24 flex flex-col items-center gap-3">
+        <span className="font-[family-name:var(--font-mono)] text-[10px] tracking-[0.2em] text-[var(--color-invert-dim)]">
+          IT STARTS WITH
+        </span>
+        <span className="h-16 w-px bg-[linear-gradient(to_bottom,var(--color-invert-line),var(--color-invert-accent))]" />
       </div>
     </section>
   );

@@ -1,35 +1,70 @@
+import { Check, X } from "lucide-react";
+
 /**
- * 06 · Who this is for — short, almost a divider. Carries the anti-pitch.
- * Copy: docs/copy.md § 06.
+ * 06 · Who this is for.
+ *
+ * Simplified: the section label is now the headline, and the two prose cards
+ * became a straight two-column pros/cons so the answer is scannable instead of
+ * read. The approved line from docs/copy.md survives as the subhead.
  */
+
+const FIT = [
+  "You're already shooting",
+  "You have footage sitting on a drive you haven't done anything with",
+  "You want to publish more without touching the edit yourself",
+];
+
+const NOT_YET = [
+  "You're still figuring out what to film",
+  "You don't know who it's for yet",
+  "You need someone to write it and shoot it",
+];
+
 export function SectionWhoFor() {
   return (
     <section className="flex flex-col items-center px-6 py-[110px]">
-      <p className="eyebrow">Who this is for</p>
-      <h2 className="mt-[18px] max-w-[700px] text-center font-[family-name:var(--font-display)] text-[clamp(28px,4.4vw,46px)] font-bold leading-[1.12] tracking-[-0.02em]">
-        This works if you&apos;re already making videos.
+      <h2 className="max-w-[900px] text-center font-[family-name:var(--font-display)] text-[clamp(38px,6.4vw,76px)] font-extrabold leading-[1.02] tracking-[-0.03em]">
+        Who this is for
       </h2>
+      <p className="mt-6 max-w-[540px] text-center text-[17px] leading-[1.6] text-ink-dim">
+        This works if you&apos;re already making videos.
+      </p>
 
-      <div className="mt-11 grid w-full max-w-[840px] gap-4 md:grid-cols-2">
-        <div className="rounded-md border border-line border-l-2 border-l-accent bg-surface p-6">
-          <p className="font-[family-name:var(--font-mono)] text-[10px] tracking-[0.14em] text-accent">
-            YOU&apos;RE A FIT
+      <div className="mt-14 grid w-full max-w-[880px] overflow-hidden rounded-xl border border-line bg-surface md:grid-cols-2">
+        <div className="border-b border-line p-7 md:border-b-0 md:border-r">
+          <p className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.16em] text-accent">
+            You&apos;re a fit
           </p>
-          <p className="mt-3 text-[15px] leading-[1.7] text-ink-dim">
-            You&apos;re already shooting, or you have footage sitting on a drive you haven&apos;t
-            done anything with.{" "}
-            <strong className="font-medium text-ink">We take over from there.</strong>
-          </p>
+          <ul className="mt-5 flex flex-col gap-4">
+            {FIT.map((item) => (
+              <li key={item} className="flex gap-3">
+                <Check
+                  aria-hidden
+                  className="mt-0.5 h-[18px] w-[18px] shrink-0 text-accent"
+                  strokeWidth={2.5}
+                />
+                <span className="text-[15px] leading-[1.55] text-ink">{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div className="rounded-md border border-line bg-surface p-6">
-          <p className="font-[family-name:var(--font-mono)] text-[10px] tracking-[0.14em] text-ink-dim">
-            NOT YET
+        <div className="bg-surface-2/50 p-7">
+          <p className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.16em] text-ink-dim">
+            Not yet
           </p>
-          <p className="mt-3 text-[15px] leading-[1.7] text-ink-dim">
-            If you&apos;re still figuring out what to film and who it&apos;s for, we&apos;re not the
-            right fit yet.
-          </p>
+          <ul className="mt-5 flex flex-col gap-4">
+            {NOT_YET.map((item) => (
+              <li key={item} className="flex gap-3">
+                <X
+                  aria-hidden
+                  className="mt-0.5 h-[18px] w-[18px] shrink-0 text-ink-dim"
+                  strokeWidth={2.5}
+                />
+                <span className="text-[15px] leading-[1.55] text-ink-dim">{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

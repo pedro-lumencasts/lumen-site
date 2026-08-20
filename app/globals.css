@@ -31,6 +31,19 @@
      Darkened from #5C6BC0 for the same contrast reason as the red. */
   --color-machine: #4553A8;
 
+  /* Inverted passage.
+     The site is light, but one stretch runs dark on purpose: the producer block
+     that closes section 04 through the fan-out that opens section 05. It reads as
+     a chapter break and it is the only place the red paths get to glow.
+     Anything inside that stretch uses these, not --color-ink / --color-bg. */
+  --color-invert-bg: #101014;
+  --color-invert-surface: #191920;
+  --color-invert-line: #2C2C36;
+  --color-invert-ink: #F2F0EB;
+  --color-invert-dim: #9A9AA4;
+  /* The bright red is legible again once it is on dark, so it comes back here. */
+  --color-invert-accent: #E8483C;
+
   /* Type — unchanged by the light switch. Wired to next/font in app/layout.tsx. */
   --font-display: var(--font-sora), sans-serif;
   --font-body: var(--font-inter), sans-serif;
