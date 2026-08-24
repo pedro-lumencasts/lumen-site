@@ -217,3 +217,36 @@ cierre (`BRAND_TAGLINE`), los links del nav y los CTAs. El rename de D3 es una l
 2. **Datos reales (D5):** tabla de tokens + umbrales, turnaround por tipo de video, retention data.
 3. **Assets reales:** todas las imágenes son stock de Unsplash — hace falta footage de clientes.
 4. **Confirmar D1** (orden de secciones) y **D2** (si la sección de AI entra).
+
+---
+
+## Prueba de estructura — `/v2`
+
+Segunda ruta con el **mismo contenido en otro orden**, siguiendo el flujo
+argumental de thebirdhouse.co. No es un fork: importa los mismos componentes que
+la home, así que arreglar una sección arregla las dos.
+
+| # | Sección | De dónde sale |
+|---|---|---|
+| 1 | Headline | `Hero` |
+| 2 | Credibility | `SectionCredibility` (nueva) + `Section02Work` como demostración |
+| 3 | Why us + CTA | `Section03Difference` + `Section06WhoFor` + `CTABand` + `SectionProducer` |
+| 4 | What we do | `Section05Formats` + `Section0708Audiences` |
+| 5 | Testimonials | `SectionTestimonials` (nueva) |
+| 6 | Our process | `SectionProcess` (nueva) + `Section04AI` + `CTABand` |
+| 7 | Pricing | `Section09Pricing` |
+| 8 | About us | `SectionAbout` (nueva) |
+| 9 | FAQ | `Section11FAQ` |
+
+**Decisiones:** "Who this is for" y las tarjetas Experts/Agencies se absorben en
+3 y 4 en vez de ir sueltas. Pricing conserva sección propia — el costo publicado
+por tokens es la ventaja con agencias, y enterrarlo en el FAQ como hace la
+referencia la tiraría. Dos CTA intermedios, uno tras el argumento y otro tras el
+proceso.
+
+**Lo que falta y no se inventó:** la credibilidad de la referencia son números
+duros ("100+ empresas", "10 mil millones de impresiones") y testimonios en video
+con resultados. No tenemos ninguno. Esas secciones renderizan la *forma* con los
+valores vacíos — cada `—` y cada `[PLACEHOLDER]` es algo que hay que salir a
+conseguir. Los testimonios están deliberadamente vacíos: nada de citas ni nombres
+inventados.
