@@ -27,4 +27,4 @@ grid communicates format range, not just "we have work". Hovering expands the ro
 
 Frames should eventually hold real client video, not stills.
 
-Working implementation: `mockups/section-05-what-we-edit.html` (part B, CSS-grid version)
+Working implementation: `public/mockups/section-05-what-we-edit.html` (part B, CSS-grid version)

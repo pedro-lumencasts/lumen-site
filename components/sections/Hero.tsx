@@ -3,7 +3,7 @@ import { CTA_PRIMARY, CTA_WORK } from "@/lib/brand";
 /**
  * 01 · Hero.
  *
- * The scroll-morph card choreography (mockups/hero-v1-scroll-morph.html) was cut:
+ * The scroll-morph card choreography (public/mockups/hero-v1-scroll-morph.html) was cut:
  * it looked good but it cost a 300vh wrapper, a rAF loop and a scatter→circle→arc
  * state machine to say nothing the headline doesn't say faster. This is a plain
  * static hero — no scroll range of its own, no animation loop.

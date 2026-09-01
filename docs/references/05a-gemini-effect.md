@@ -39,4 +39,4 @@ chip sits at the origin point; format labels (SHORTS / CLIPS / LONG-FORM / REELS
 light up at the end of each path as it completes. That's the copy's "one recording usually
 becomes several pieces" made literal.
 
-Working implementation: `mockups/section-05-what-we-edit.html` (part A)
+Working implementation: `public/mockups/section-05-what-we-edit.html` (part A)

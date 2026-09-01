@@ -16,5 +16,5 @@ is complete and self-contained.
 | 05a | Gemini-style path fan-out | `05a-gemini-effect.md` | ❌ demo usage only |
 | 05b | Dynamic frame layout | `05b-dynamic-frame-layout.md` | ❌ demo usage only |
 
-The HTML mockups in `mockups/` are vanilla JS reimplementations of these ideas, adapted to
+The HTML mockups in `public/mockups/` are vanilla JS reimplementations of these ideas, adapted to
 Lumen's copy and tokens. Where a reference is missing its source, the mockup **is** the spec.

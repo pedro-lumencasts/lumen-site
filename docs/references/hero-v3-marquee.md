@@ -9,7 +9,7 @@ Reframed as a **cinema marquee**: bulb strip along the top, headline igniting wo
 and the image marquee rendered as taped polaroids instead of flat cards. Violet/gold palette
 (deliberately not the red accent, to keep the three hero options distinct).
 
-Working implementation (vanilla JS): `mockups/hero-v3-marquee.html`
+Working implementation (vanilla JS): `public/mockups/hero-v3-marquee.html`
 
 ## Original source
 

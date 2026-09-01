@@ -44,4 +44,4 @@ Then they trust you.   ← accent color
 
 Followed by the "Cutting the ums…" body copy and a `WE CALL IT TIME ON BRAND` mono chip.
 
-Working implementation: `mockups/section-03-the-difference.html`
+Working implementation: `public/mockups/section-03-the-difference.html`

@@ -27,7 +27,7 @@ explicitly off-brand.
 | `docs/build-sheet.md` | Section map, tags, what's done, open decisions. Update as you go. |
 | `docs/design-tokens.md` | Palette, type scale, spacing. Every section must use these. |
 | `docs/references/` | The component references chosen per section, with original source code. |
-| `mockups/` | Working HTML mockups already built and approved. Port these, don't reinvent. |
+| `public/mockups/` | Working HTML mockups already built and approved. Port these, don't reinvent. |
 
 ## Stack
 

@@ -9,7 +9,7 @@ Cards are raw footage clips that scatter → align into a strip → form a curat
 scroll. Flipping a card reveals a timecode. The reading: raw material becoming an edit.
 Palette recolored to the timeline tokens; copy is the approved hero block.
 
-Working implementation (vanilla JS): `mockups/hero-v1-scroll-morph.html`
+Working implementation (vanilla JS): `public/mockups/hero-v1-scroll-morph.html`
 
 ## Original source
 
@@ -156,7 +156,7 @@ export default function IntroAnimation() {
     }, []);
 
     // …scatter positions, morph interpolation between circle and bottom arc,
-    // content opacity driven by smoothMorph. See mockups/hero-v1-scroll-morph.html
+    // content opacity driven by smoothMorph. See public/mockups/hero-v1-scroll-morph.html
     // for the full behaviour as implemented for Lumen.
 }
 ```
